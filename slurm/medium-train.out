@@ -1,0 +1,330 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2643170
+Academic license 2643170 - for non-commercial use only - registered to dh___@vt.edu
+Set parameter LogToConsole to value 0
+Finished qis_2000_1800_5_74.lp
+Finished qis_2000_1800_5_47.lp
+Finished qis_2000_1800_5_10.lp
+Finished qis_2000_1800_5_32.lp
+Finished qis_2000_1800_5_35.lp
+Finished qis_2000_1800_5_45.lp
+Finished qis_2000_1800_5_57.lp
+Finished qis_2000_1800_5_51.lp
+Finished qis_2000_1800_5_84.lp
+Finished qis_2000_1800_5_28.lp
+Finished qis_2000_1800_5_15.lp
+Finished qis_2000_1800_5_68.lp
+Finished qis_2000_1800_5_27.lp
+Finished qis_2000_1800_5_78.lp
+Finished qis_2000_1800_5_38.lp
+Finished qis_2000_1800_5_43.lp
+Finished qis_2000_1800_5_54.lp
+Finished qis_2000_1800_5_6.lp
+Finished qis_2000_1800_5_55.lp
+Finished qis_2000_1800_5_53.lp
+Finished qis_2000_1800_5_61.lp
+Finished qis_2000_1800_5_13.lp
+Finished qis_2000_1800_5_18.lp
+Finished qis_2000_1800_5_7.lp
+Finished qis_2000_1800_5_52.lp
+Finished qis_2000_1800_5_30.lp
+Finished qis_2000_1800_5_37.lp
+Finished qis_2000_1800_5_87.lp
+Finished qis_2000_1800_5_63.lp
+Finished qis_2000_1800_5_89.lp
+Finished qis_2000_1800_5_9.lp
+Finished qis_2000_1800_5_76.lp
+Finished qis_2000_1800_5_50.lp
+Finished qis_2000_1800_5_23.lp
+Finished qis_2000_1800_5_46.lp
+Finished qis_2000_1800_5_82.lp
+Finished qis_2000_1800_5_69.lp
+Finished qis_2000_1800_5_26.lp
+Finished qis_2000_1800_5_36.lp
+Finished qis_2000_1800_5_17.lp
+Finished qis_2000_1800_5_24.lp
+Finished qis_2000_1800_5_88.lp
+Finished qis_2000_1800_5_66.lp
+Finished qis_2000_1800_5_80.lp
+Finished qis_2000_1800_5_5.lp
+Finished qis_2000_1800_5_41.lp
+Finished qis_2000_1800_5_44.lp
+Finished qis_2000_1800_5_73.lp
+Finished qis_2000_1800_5_4.lp
+Finished qis_2000_1800_5_39.lp
+Finished qis_2000_1800_5_16.lp
+Finished qis_2000_1800_5_77.lp
+Finished qis_2000_1800_5_31.lp
+Finished qis_2000_1800_5_8.lp
+Finished qis_2000_1800_5_29.lp
+Finished qis_2000_1800_5_12.lp
+Finished qis_2000_1800_5_34.lp
+Finished qis_2000_1800_5_64.lp
+Finished qis_2000_1800_5_83.lp
+Finished qis_2000_1800_5_42.lp
+Finished qis_2000_1800_5_14.lp
+Finished qis_2000_1800_5_59.lp
+Finished qis_2000_1800_5_60.lp
+Finished qis_2000_1800_5_75.lp
+Finished qis_2000_1800_5_20.lp
+Finished qis_2000_1800_5_70.lp
+Finished qis_2000_1800_5_79.lp
+Finished qis_2000_1800_5_2.lp
+Finished qis_2000_1800_5_0.lp
+Finished qis_2000_1800_5_85.lp
+Finished qis_2000_1800_5_48.lp
+Finished qis_2000_1800_5_11.lp
+Finished qis_2000_1800_5_86.lp
+Finished qis_2000_1800_5_21.lp
+Finished qis_2000_1800_5_58.lp
+Finished qis_2000_1800_5_40.lp
+Finished qis_2000_1800_5_62.lp
+Finished qis_2000_1800_5_81.lp
+Finished qis_2000_1800_5_3.lp
+Finished qis_2000_1800_5_71.lp
+Finished qis_2000_1800_5_25.lp
+Finished qis_2000_1800_5_72.lp
+Finished qis_2000_1800_5_19.lp
+Finished qis_2000_1800_5_1.lp
+Finished qis_2000_1800_5_22.lp
+Finished qis_2000_1800_5_65.lp
+Finished qis_2000_1800_5_49.lp
+Finished qis_2000_1800_5_67.lp
+Finished qis_2000_1800_5_56.lp
+Finished qis_2000_1800_5_33.lp
+Finished 90 medium files in total
+Failed 0 medium files in total
+Loading data...
+Start training UniEGNN on medium problems with 6 layers.
+Epoch 1 training: loss: 2.31148
+Epoch 1 validation: loss: 2.30243
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 2 training: loss: 2.30159
+Epoch 2 validation: loss: 2.30168
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 3 training: loss: 2.31761
+Epoch 3 validation: loss: 2.30236
+Epoch 4 training: loss: 2.30473
+Epoch 4 validation: loss: 2.30192
+Epoch 5 training: loss: 2.30487
+Epoch 5 validation: loss: 2.30194
+Epoch 6 training: loss: 2.32235
+Epoch 6 validation: loss: 2.30250
+Epoch 7 training: loss: 2.29973
+Epoch 7 validation: loss: 2.30290
+Epoch 8 training: loss: 2.30440
+Epoch 8 validation: loss: 2.30263
+Epoch 9 training: loss: 2.32226
+Epoch 9 validation: loss: 2.30298
+Epoch 10 training: loss: 2.30923
+Epoch 10 validation: loss: 2.30286
+Epoch 11 training: loss: 2.28802
+Epoch 11 validation: loss: 2.30247
+Epoch 12 training: loss: 2.30621
+Epoch 12 validation: loss: 2.30216
+Epoch 13 training: loss: 2.31810
+Epoch 13 validation: loss: 2.30180
+Epoch 14 training: loss: 2.31102
+Epoch 14 validation: loss: 2.30185
+Epoch 15 training: loss: 2.30623
+Epoch 15 validation: loss: 2.30150
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 16 training: loss: 2.30902
+Epoch 16 validation: loss: 2.30113
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 17 training: loss: 2.30475
+Epoch 17 validation: loss: 2.30098
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 18 training: loss: 2.30002
+Epoch 18 validation: loss: 2.30076
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 19 training: loss: 2.31998
+Epoch 19 validation: loss: 2.30128
+Epoch 20 training: loss: 2.29281
+Epoch 20 validation: loss: 2.30166
+Epoch 21 training: loss: 2.32421
+Epoch 21 validation: loss: 2.30170
+Epoch 22 training: loss: 2.31513
+Epoch 22 validation: loss: 2.30161
+Epoch 23 training: loss: 2.30919
+Epoch 23 validation: loss: 2.30107
+Epoch 24 training: loss: 2.30504
+Epoch 24 validation: loss: 2.30082
+Epoch 25 training: loss: 2.30939
+Epoch 25 validation: loss: 2.30075
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 26 training: loss: 2.29148
+Epoch 26 validation: loss: 2.30064
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 27 training: loss: 2.29936
+Epoch 27 validation: loss: 2.30081
+Epoch 28 training: loss: 2.32362
+Epoch 28 validation: loss: 2.30106
+Epoch 29 training: loss: 2.29773
+Epoch 29 validation: loss: 2.30124
+Epoch 30 training: loss: 2.29584
+Epoch 30 validation: loss: 2.30145
+Epoch 31 training: loss: 2.31050
+Epoch 31 validation: loss: 2.30142
+Epoch 32 training: loss: 2.33493
+Epoch 32 validation: loss: 2.30161
+Epoch 33 training: loss: 2.30338
+Epoch 33 validation: loss: 2.30169
+Epoch 34 training: loss: 2.30165
+Epoch 34 validation: loss: 2.30189
+Epoch 35 training: loss: 2.29812
+Epoch 35 validation: loss: 2.30183
+Epoch 36 training: loss: 2.31733
+Epoch 36 validation: loss: 2.30172
+Epoch 37 training: loss: 2.30419
+Epoch 37 validation: loss: 2.30159
+Epoch 38 training: loss: 2.31356
+Epoch 38 validation: loss: 2.30162
+Epoch 39 training: loss: 2.30551
+Epoch 39 validation: loss: 2.30184
+Epoch 40 training: loss: 2.31406
+Epoch 40 validation: loss: 2.30187
+Epoch 41 training: loss: 2.28999
+Epoch 41 validation: loss: 2.30183
+Epoch 42 training: loss: 2.32402
+Epoch 42 validation: loss: 2.30187
+Epoch 43 training: loss: 2.30891
+Epoch 43 validation: loss: 2.30192
+Epoch 44 training: loss: 2.30686
+Epoch 44 validation: loss: 2.30195
+Epoch 45 training: loss: 2.29069
+Epoch 45 validation: loss: 2.30216
+Epoch 46 training: loss: 2.31068
+Epoch 46 validation: loss: 2.30221
+Epoch 47 training: loss: 2.30918
+Epoch 47 validation: loss: 2.30208
+Epoch 48 training: loss: 2.31323
+Epoch 48 validation: loss: 2.30189
+Epoch 49 training: loss: 2.30339
+Epoch 49 validation: loss: 2.30185
+Epoch 50 training: loss: 2.29341
+Epoch 50 validation: loss: 2.30185
+Epoch 51 training: loss: 2.30465
+Epoch 51 validation: loss: 2.30185
+Epoch 52 training: loss: 2.31312
+Epoch 52 validation: loss: 2.30191
+Epoch 53 training: loss: 2.31413
+Epoch 53 validation: loss: 2.30183
+Epoch 54 training: loss: 2.31541
+Epoch 54 validation: loss: 2.30177
+Epoch 55 training: loss: 2.29930
+Epoch 55 validation: loss: 2.30137
+Epoch 56 training: loss: 2.29501
+Epoch 56 validation: loss: 2.30129
+Epoch 57 training: loss: 2.31300
+Epoch 57 validation: loss: 2.30095
+Epoch 58 training: loss: 2.30225
+Epoch 58 validation: loss: 2.30064
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 59 training: loss: 2.28943
+Epoch 59 validation: loss: 2.30045
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 60 training: loss: 2.30603
+Epoch 60 validation: loss: 2.30000
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 61 training: loss: 2.30525
+Epoch 61 validation: loss: 2.30005
+Epoch 62 training: loss: 2.30568
+Epoch 62 validation: loss: 2.29981
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 63 training: loss: 2.30626
+Epoch 63 validation: loss: 2.29978
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 64 training: loss: 2.29588
+Epoch 64 validation: loss: 2.29978
+Epoch 65 training: loss: 2.30702
+Epoch 65 validation: loss: 2.29953
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 66 training: loss: 2.30551
+Epoch 66 validation: loss: 2.29951
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 67 training: loss: 2.30363
+Epoch 67 validation: loss: 2.29981
+Epoch 68 training: loss: 2.29132
+Epoch 68 validation: loss: 2.30052
+Epoch 69 training: loss: 2.30036
+Epoch 69 validation: loss: 2.30082
+Epoch 70 training: loss: 2.30074
+Epoch 70 validation: loss: 2.30025
+Epoch 71 training: loss: 2.29917
+Epoch 71 validation: loss: 2.30010
+Epoch 72 training: loss: 2.30179
+Epoch 72 validation: loss: 2.29962
+Epoch 73 training: loss: 2.29337
+Epoch 73 validation: loss: 2.30012
+Epoch 74 training: loss: 2.30694
+Epoch 74 validation: loss: 2.30032
+Epoch 75 training: loss: 2.30545
+Epoch 75 validation: loss: 2.30047
+Epoch 76 training: loss: 2.29550
+Epoch 76 validation: loss: 2.30037
+Epoch 77 training: loss: 2.30488
+Epoch 77 validation: loss: 2.29986
+Epoch 78 training: loss: 2.31772
+Epoch 78 validation: loss: 2.29978
+Epoch 79 training: loss: 2.30551
+Epoch 79 validation: loss: 2.30019
+Epoch 80 training: loss: 2.29683
+Epoch 80 validation: loss: 2.30027
+Epoch 81 training: loss: 2.30647
+Epoch 81 validation: loss: 2.30002
+Epoch 82 training: loss: 2.30093
+Epoch 82 validation: loss: 2.29927
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 83 training: loss: 2.32031
+Epoch 83 validation: loss: 2.29883
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 84 training: loss: 2.29517
+Epoch 84 validation: loss: 2.29894
+Epoch 85 training: loss: 2.30413
+Epoch 85 validation: loss: 2.29853
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 86 training: loss: 2.31608
+Epoch 86 validation: loss: 2.29829
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 87 training: loss: 2.31301
+Epoch 87 validation: loss: 2.29772
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 88 training: loss: 2.30043
+Epoch 88 validation: loss: 2.29754
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 89 training: loss: 2.29318
+Epoch 89 validation: loss: 2.29714
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 90 training: loss: 2.30429
+Epoch 90 validation: loss: 2.29581
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 91 training: loss: 2.30595
+Epoch 91 validation: loss: 2.29438
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 92 training: loss: 2.29636
+Epoch 92 validation: loss: 2.29360
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 93 training: loss: 2.31821
+Epoch 93 validation: loss: 2.29350
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 94 training: loss: 2.30256
+Epoch 94 validation: loss: 2.29413
+Epoch 95 training: loss: 2.29542
+Epoch 95 validation: loss: 2.29359
+Epoch 96 training: loss: 2.29007
+Epoch 96 validation: loss: 2.29310
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 97 training: loss: 2.29316
+Epoch 97 validation: loss: 2.29061
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 98 training: loss: 2.30291
+Epoch 98 validation: loss: 2.28935
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 99 training: loss: 2.28513
+Epoch 99 validation: loss: 2.28858
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 100 training: loss: 2.30071
+Epoch 100 validation: loss: 2.28745
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
