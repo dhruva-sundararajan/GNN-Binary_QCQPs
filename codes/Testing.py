@@ -5,6 +5,7 @@ import torch
 import os
 import gurobipy as gp
 import argparse
+from random import uniform
 
 import NeuralPrediction
 from Encoding import file2graph_HG
@@ -42,40 +43,43 @@ def main(args):
     os.makedirs(results_dir, exist_ok=True)
 
     for i in os.listdir(input_dir):
-        s = list()
-        predictions = predict(args, input_dir, i, data_dir)
-        for _ in range(1000):
-            model = gp.read(f"{input_dir}/{i}")
-            for var, pred in zip(variables, predictions):
-                num = uniform(0, 1)
-                if num <= pred:
-                    var.LB = 1
-                    var.UB = 1
+        if i.endswith('.lp'):
+            s = list()
+            predictions = predict(args, input_dir, i, data_dir)
+            for _ in range(1000):
+                model = gp.read(f"{input_dir}/{i}")
+                variables = model.getVars()
+                for var, pred in zip(variables, predictions):
+                    num = uniform(0, 1)
+                    if num <= pred:
+                        var.LB = 1
+                        var.UB = 1
+                    else:
+                        var.LB = 0
+                        var.UB = 0
+                model.update()
+                model.optimize()
+                if model.Status == gp.GRB.OPTIMAL:
+                    soln = {'status': model.Status, 'obj_val': model.ObjVal, 'vars': {}}
+                    for var in model.getVars():
+                        soln['vars'][var.VarName] = var.X
                 else:
-                    var.LB = 0
-                    var.UB = 0
-            model.update()
-            model.optimize()
-            if model.Status == gp.GRB.OPTIMAL:
-                soln = {'status': model.Status, 'obj_val': model.ObjVal, 'vars': {}}
-                for var in model.getVars():
-                    soln['vars'][var.VarName] = var.X
-            else:
-                soln = {'status': model.Status, 'obj_val': None, 'vars': None}
-            s.append(soln)
+                    soln = {'status': model.Status, 'obj_val': None, 'vars': {}}
+                    for var in model.getVars():
+                        soln['vars'][var.VarName] = var.LB
+                s.append(soln)
         rows = []
+        for soln in s:
+            row = {
+                'status': soln['status'],
+                'obj_val': soln['obj_val'],
+            }
+            for var in soln['vars']:
+                row[var] = soln['vars'][var]
+            rows.append(row)
 
-    for soln in s:
-        row = {
-            'status': soln['status'],
-            'obj_val': soln['obj_val'],
-        }
-        if soln['vars'] is not None:
-            row.update(soln['vars'])
-        rows.append(row)
-
-    df = pd.DataFrame(rows)
-    df.to_csv(f"{result_dir}/{i.split('.')[0]}.csv", index=False)
+        df = pd.DataFrame(rows)
+        df.to_csv(f"{results_dir}/{i.split('.')[0]}.csv", index=False)
     
 def parse_args():
     parser = argparse.ArgumentParser()
