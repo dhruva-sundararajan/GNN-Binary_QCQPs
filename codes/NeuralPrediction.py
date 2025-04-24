@@ -30,17 +30,23 @@ all_activations = {
     'identity': nn.Identity()
 }
 
-def weighted_log_likelihood(expectations, y_matrix):
-    obj_vals = y_matrix[:, 0]  # shape (N_i,)
-    weights = torch.softmax(-obj_vals, dim=0)  # w_{ij} using Eq (12)
+def loss_fn(output, y_matrix):
+    obj_vals = y_matrix[:, 0]             # (N_i,)
+    solutions = y_matrix[:, 1:]           # (N_i, n_vars)
+    weights = torch.softmax(-obj_vals, dim=0)  # (N_i,)
 
-    log_Z = torch.logsumexp(-expectations, dim=0)  # log Z(M_i)
-    log_probs = -expectations - log_Z  # log p(x^{i,j} | M_i) using Eq (9)
+    criterion = nn.BCEWithLogitsLoss(reduction='sum')
 
-    weighted_log_probs = weights * log_probs  # w_{ij} * log p(x | M)
-    loss = -torch.sum(weighted_log_probs)  # final loss
+    loss = 0.0
+    n_solns = solutions.shape[0]
 
-    return loss
+    for i in range(n_solns):
+        target = solutions[i]
+        weight = weights[i]
+        bce = criterion(output, target)
+        loss += weight * bce
+
+    return -loss
 
 
 # def best_feasible_f1(pred_bin, y_matrix):
@@ -327,7 +333,7 @@ def train(args):
             output = model(G)
             output = output[:len(G.opt_sol)]
             # binary_output = (output > 0).long()
-            loss = weighted_log_likelihood(output, G.opt_sol)
+            loss = loss_fn(output, G.opt_sol)
             # f1 = f1_score(G.opt_sol.cpu().numpy().astype(int), binary_output.cpu().numpy().astype(int), average='binary')
 
             accumulated_loss += loss
@@ -364,7 +370,7 @@ def train(args):
                 output = model(G)
                 output = output[:len(G.opt_sol)]
                 binary_output = (output > 0).long()
-                loss = weighted_log_likelihood(output, G.opt_sol)
+                loss = loss_fn(output, G.opt_sol)
                 # f1 = f1_score(G.opt_sol.cpu().numpy().astype(int), binary_output.cpu().numpy(), average='binary')
                 val_losses.append(loss.item())
                 # val_f1s.append(f1)
