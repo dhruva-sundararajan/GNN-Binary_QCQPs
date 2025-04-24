@@ -30,33 +30,12 @@ all_activations = {
     'identity': nn.Identity()
 }
 
-# def boltzmann_weighted_log_likelihood(pred, y_matrix):
-#     obj_vals = y_matrix[:, 0]  # (N_i,)
-#     solutions = y_matrix[:, 1:]  # (N_i, n_vars)
-
-#     # Ensure pred is broadcastable to shape (N_i, n_vars)
-#     if pred.dim() == 1:
-#         pred = pred.unsqueeze(0)  # (1, n_vars)
-#     pred = pred.expand(solutions.size(1), -1).T  # (N_i, n_vars)
-
-#     pred = torch.clamp(pred, 1e-8, 1 - 1e-8)  # avoid log(0)
-
-#     weights = torch.softmax(-obj_vals, dim=0)  # (N_i,)
-#     log_p = solutions * torch.log(pred) + (1 - solutions) * torch.log(1 - pred)
-#     log_likelihood = log_p.sum(dim=1)  # (N_i,)
-#     loss = -torch.sum(weights * log_likelihood)
-#     return loss
-
-def boltzmann_weighted_log_likelihood(energy_preds, y_matrix):
-    """
-    energy_preds: Tensor of shape (N_i,) – model's E(x^{i,j}; M) for each solution
-    y_matrix: Tensor of shape (N_i, n_vars + 1) – [objective_value, x1, x2, ..., xn]
-    """
+def weighted_log_likelihood(expectations, y_matrix):
     obj_vals = y_matrix[:, 0]  # shape (N_i,)
     weights = torch.softmax(-obj_vals, dim=0)  # w_{ij} using Eq (12)
 
-    log_Z = torch.logsumexp(-energy_preds, dim=0)  # log Z(M_i)
-    log_probs = -energy_preds - log_Z  # log p(x^{i,j} | M_i) using Eq (9)
+    log_Z = torch.logsumexp(-expectations, dim=0)  # log Z(M_i)
+    log_probs = -expectations - log_Z  # log p(x^{i,j} | M_i) using Eq (9)
 
     weighted_log_probs = weights * log_probs  # w_{ij} * log p(x | M)
     loss = -torch.sum(weighted_log_probs)  # final loss
@@ -348,7 +327,7 @@ def train(args):
             output = model(G)
             output = output[:len(G.opt_sol)]
             # binary_output = (output > 0).long()
-            loss = boltzmann_weighted_log_likelihood(output, G.opt_sol)
+            loss = weighted_log_likelihood(output, G.opt_sol)
             # f1 = f1_score(G.opt_sol.cpu().numpy().astype(int), binary_output.cpu().numpy().astype(int), average='binary')
 
             accumulated_loss += loss
@@ -385,7 +364,7 @@ def train(args):
                 output = model(G)
                 output = output[:len(G.opt_sol)]
                 binary_output = (output > 0).long()
-                loss = boltzmann_weighted_log_likelihood(output, G.opt_sol)
+                loss = weighted_log_likelihood(output, G.opt_sol)
                 # f1 = f1_score(G.opt_sol.cpu().numpy().astype(int), binary_output.cpu().numpy(), average='binary')
                 val_losses.append(loss.item())
                 # val_f1s.append(f1)
