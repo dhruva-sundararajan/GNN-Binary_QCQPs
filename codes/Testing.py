@@ -24,63 +24,58 @@ def predict(args, input_dir, input_file, data_dir):
     problem_data = [var_features, constr_features, obj_features, edge_features, edges]
     ModelClass = NeuralPrediction.all_models['UniEGNN']
     nnmodel = ModelClass(args)
-    model_path = os.path.join(_root, 'models', args.difficulty)
+    model_path = os.path.join(_root, 'models', f"{args.difficulty}.pkl")
     nnmodel.load_state_dict(torch.load(model_path, map_location=torch.device(args.device)))
     G = NeuralPrediction.all_data["HG"](*graph_data)
     output = nnmodel(G)
     output = output[:len(G.opt_sol)].cpu().detach()
     
     output = torch.sigmoid(output)
-    output = torch.where(output > args.threshold, torch.tensor(1.0),
-                            torch.where(output < 1 - args.threshold, torch.tensor(0.0), output))
     output = output.cpu().detach().numpy()
     return output
 
 def main(args):
     input_dir = os.path.join(_root, 'data', 'test', 'problem', args.difficulty)
     data_dir = os.path.join(_root, 'data', 'test', 'encoding', args.difficulty)
-    if not os.path.exists(data_dir):
-        os.makedirs(data_dir)
+    results_dir = os.path.join(_root, 'results', args.difficulty)
+    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
 
-    file = []
-    no_gnn = []
-    gnn = []
-    variables_fixed = []
-
-    for input_file in os.listdir(input_dir):
-        if input_file.endswith('.lp'):
-            start_time = time.time()
-            model = gp.read(os.path.join(input_dir, input_file))
-            model.optimize()
-            end_time = time.time()
-            time_taken_no_gnn = end_time - start_time
-            start_time = time.time()
-            output = predict(args, input_dir, input_file, data_dir)
-            model = gp.read(os.path.join(input_dir, input_file))
-            variables = model.getVars()
-            v = 0
+    for i in os.listdir(input_dir):
+        s = list()
+        predictions = predict(args, input_dir, i, data_dir)
+        for _ in range(1000):
+            model = gp.read(f"{input_dir}/{i}")
             for var, pred in zip(variables, predictions):
-                if pred == 1.0 or pred == 0.0:
-                    var.LB = pred
-                    var.UB = pred
-                    v += 1
+                num = uniform(0, 1)
+                if num <= pred:
+                    var.LB = 1
+                    var.UB = 1
+                else:
+                    var.LB = 0
+                    var.UB = 0
             model.update()
             model.optimize()
-            end_time = time.time()
-            time_taken_with_gnn = end_time - start_time
-            file.append(input_file)
-            no_gnn.append(time_taken_no_gnn)
-            gnn.append(time_taken_with_gnn)
-            variables_fixed.append(v)
-    df = pd.DataFrame({
-        'File': file,
-        'Time taken without GNN (s)': no_gnn,
-        'Time taken with GNN (s)': gnn,
-        'Variables fixed': variables_fixed
-    })
-    results_dir = os.path.join(_root, 'results')
-    os.makedirs(results_dir, exist_ok=True)
-    df.to_csv(os.path.join(results_dir, f'{args.difficulty}.csv'), index=False)
+            if model.Status == gp.GRB.OPTIMAL:
+                soln = {'status': model.Status, 'obj_val': model.ObjVal, 'vars': {}}
+                for var in model.getVars():
+                    soln['vars'][var.VarName] = var.X
+            else:
+                soln = {'status': model.Status, 'obj_val': None, 'vars': None}
+            s.append(soln)
+        rows = []
+
+    for soln in s:
+        row = {
+            'status': soln['status'],
+            'obj_val': soln['obj_val'],
+        }
+        if soln['vars'] is not None:
+            row.update(soln['vars'])
+        rows.append(row)
+
+    df = pd.DataFrame(rows)
+    df.to_csv(f"{result_dir}/{i.split('.')[0]}.csv", index=False)
     
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -112,7 +107,6 @@ def parse_args():
                         help="0 for default epochs in one figure, -1 for default epochs in separate figures, integer for a specific epoch")
     parser.add_argument('--output', '-o', action='store_true',
                         default=False, help="output the neural outputs")
-    parser.add_argument('--threshold', '-t', type=float, default=0.9)
     args = parser.parse_args()
     args.bias = not args.nobias
     channels_dict = {
