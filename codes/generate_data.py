@@ -4,6 +4,9 @@ import gurobipy as gp
 from gurobipy import GRB
 
 def solve_and_save_feasible_solutions(model_path, output_dir):
+    if os.path.isdir(output_dir):
+        print(f"Output directory {output_dir} already exists. Skipping {model_path}.")
+        return
     os.makedirs(output_dir, exist_ok=True)
 
     # Load model
