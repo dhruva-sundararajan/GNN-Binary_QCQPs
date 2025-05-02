@@ -6,6 +6,7 @@ import os
 import gurobipy as gp
 import argparse
 from random import uniform
+import csv
 
 import NeuralPrediction
 from Encoding import file2graph_HG
@@ -35,10 +36,10 @@ def predict(args, input_dir, input_file, data_dir):
     output = output.cpu().detach().numpy()
     return output
 
-def main(args):
+def sampling(args):
     input_dir = os.path.join(_root, 'data', 'test', 'problem', args.difficulty)
     data_dir = os.path.join(_root, 'data', 'test', 'encoding', args.difficulty)
-    results_dir = os.path.join(_root, 'results', args.difficulty)
+    results_dir = os.path.join(_root, 'results', args.solve_type, args.difficulty)
     os.makedirs(data_dir, exist_ok=True)
     os.makedirs(results_dir, exist_ok=True)
 
@@ -80,9 +81,47 @@ def main(args):
 
         df = pd.DataFrame(rows)
         df.to_csv(f"{results_dir}/{i.split('.')[0]}.csv", index=False)
+
+def normal(args):
+    input_dir = os.path.join(_root, 'data', 'test', 'problem', args.difficulty)
+    data_dir = os.path.join(_root, 'data', 'test', 'encoding', args.difficulty)
+    results_dir = os.path.join(_root, 'results', args.solve_type, args.difficulty)
+    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
+
+    log_path = os.path.join(results_dir, 'solution_status.csv')
+    with open(log_path, mode='w', newline='') as log_file:
+        writer = csv.writer(log_file)
+        writer.writerow(['file_name', 'status'])
+
+        for i in os.listdir(input_dir):
+            if i.endswith('.lp'):
+                predictions = predict(args, input_dir, i, data_dir)
+                predictions = np.where(predictions > 0.9999, 1, np.where(predictions < 0.0001, 0, predictions))
+                model = gp.read(os.path.join(input_dir, i))
+                variables = model.getVars()
+
+                for var, pred in zip(variables, predictions):
+                    if pred == 0 or pred == 1:
+                        var.LB = pred
+                        var.UB = pred
+
+                model.update()
+                model.optimize()
+
+                base_name = os.path.splitext(i)[0]
+                status = model.Status
+                writer.writerow([i, status])
+
+                if status == GRB.OPTIMAL:
+                    sol_path = os.path.join(results_dir, f"{base_name}.sol")
+                    model.write(sol_path)
+                else:
+                    pass
     
 def parse_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument('--solve_type', '-s', type=str, required=True)
     parser.add_argument('--difficulty', '-d', type=str, required=True)
     parser.add_argument('--model', '-m', type=str, default='UniEGNN',
                         choices=['UniEGNN'])
@@ -122,4 +161,4 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    main(args)
+    eval(args.solve_type)(args)
