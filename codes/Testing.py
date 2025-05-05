@@ -28,10 +28,10 @@ def predict(args, input_dir, input_file, data_dir):
     nnmodel = ModelClass(args)
     model_path = os.path.join(_root, 'models', f"{args.difficulty}.pkl")
     nnmodel.load_state_dict(torch.load(model_path, map_location=torch.device(args.device)))
+    nnmodel.eval()
     G = NeuralPrediction.all_data["HG"](*graph_data)
     output = nnmodel(G)
     output = output[:len(G.opt_sol)].cpu().detach()
-    
     output = torch.sigmoid(output)
     output = output.cpu().detach().numpy()
     return output
@@ -96,16 +96,32 @@ def normal(args):
 
         for i in os.listdir(input_dir):
             if i.endswith('.lp'):
-                predictions = predict(args, input_dir, i, data_dir)
-                predictions = np.where(predictions > 0.9999, 1, np.where(predictions < 0.0001, 0, predictions))
+                name, graph_data = _encoding(str(f"{input_dir}/{i}"), str(data_dir))
+                var_features, _, _, constr_features, obj_features, edge_features, edges, _ = graph_data
+                problem_data = [var_features, constr_features, obj_features, edge_features, edges]
+                ModelClass = NeuralPrediction.all_models['UniEGNN']
+                nnmodel = ModelClass(args)
+                model_path = os.path.join(_root, 'models', f"{args.difficulty}.pkl")
+                nnmodel.load_state_dict(torch.load(model_path, map_location=torch.device(args.device)))
+                nnmodel.eval()
+                G = NeuralPrediction.all_data["HG"](*graph_data)
+                output = nnmodel(G)
+                output = output[:len(G.opt_sol)].cpu().detach()
+                output = torch.sigmoid(output)
+                predictions = torch.where(output > 0.9999, torch.tensor(1.0, device=output.device),
+                    torch.where(output < 0.0001, torch.tensor(0.0, device=output.device), output))
+                print(predictions)
+                # break
                 model = gp.read(os.path.join(input_dir, i))
                 variables = model.getVars()
 
                 for var, pred in zip(variables, predictions):
-                    if pred == 0 or pred == 1:
-                        var.LB = pred
-                        var.UB = pred
-
+                    if pred == 0:
+                        var.LB = 0
+                        var.UB = 0
+                    elif pred == 1:
+                        var.LB = 1
+                        var.UB = 1
                 model.update()
                 model.optimize()
 
@@ -118,7 +134,7 @@ def normal(args):
                     model.write(sol_path)
                 else:
                     pass
-    
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--solve_type', '-s', type=str, required=True)
@@ -150,6 +166,7 @@ def parse_args():
                         help="0 for default epochs in one figure, -1 for default epochs in separate figures, integer for a specific epoch")
     parser.add_argument('--output', '-o', action='store_true',
                         default=False, help="output the neural outputs")
+    parser.add_argument('--no-train', default=False)
     args = parser.parse_args()
     args.bias = not args.nobias
     channels_dict = {
