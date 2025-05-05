@@ -396,3 +396,71 @@ Epoch 72 validation: loss: 0.65196, F1: 0.64472
 Epoch 73 training: loss: 0.65256, F1: 0.64638
 Epoch 73 validation: loss: 0.65122, F1: 0.64472
 Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 74 training: loss: 0.65253, F1: 0.64638
+Epoch 74 validation: loss: 0.65107, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 75 training: loss: 0.65222, F1: 0.64638
+Epoch 75 validation: loss: 0.65073, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 76 training: loss: 0.65221, F1: 0.64638
+Epoch 76 validation: loss: 0.65096, F1: 0.64472
+Epoch 77 training: loss: 0.65222, F1: 0.64638
+Epoch 77 validation: loss: 0.65098, F1: 0.64472
+Epoch 78 training: loss: 0.65230, F1: 0.64638
+Epoch 78 validation: loss: 0.65081, F1: 0.64472
+Epoch 79 training: loss: 0.65221, F1: 0.64638
+Epoch 79 validation: loss: 0.65043, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 80 training: loss: 0.65321, F1: 0.64638
+Epoch 80 validation: loss: 0.65092, F1: 0.64472
+Epoch 81 training: loss: 0.65293, F1: 0.64638
+Epoch 81 validation: loss: 0.65138, F1: 0.64472
+Epoch 82 training: loss: 0.65205, F1: 0.64638
+Epoch 82 validation: loss: 0.65068, F1: 0.64472
+Epoch 83 training: loss: 0.65194, F1: 0.64638
+Epoch 83 validation: loss: 0.65019, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 84 training: loss: 0.65187, F1: 0.64638
+Epoch 84 validation: loss: 0.65028, F1: 0.64472
+Epoch 85 training: loss: 0.65173, F1: 0.64638
+Epoch 85 validation: loss: 0.65077, F1: 0.64472
+Epoch 86 training: loss: 0.65172, F1: 0.64638
+Epoch 86 validation: loss: 0.65009, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 87 training: loss: 0.65141, F1: 0.64638
+Epoch 87 validation: loss: 0.65034, F1: 0.64472
+Epoch 88 training: loss: 0.65153, F1: 0.64638
+Epoch 88 validation: loss: 0.64993, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 89 training: loss: 0.65144, F1: 0.64638
+Epoch 89 validation: loss: 0.64970, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 90 training: loss: 0.65150, F1: 0.64638
+Epoch 90 validation: loss: 0.65005, F1: 0.64472
+Epoch 91 training: loss: 0.65131, F1: 0.64638
+Epoch 91 validation: loss: 0.64973, F1: 0.64472
+Epoch 92 training: loss: 0.65144, F1: 0.64638
+Epoch 92 validation: loss: 0.64957, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 93 training: loss: 0.65161, F1: 0.64638
+Epoch 93 validation: loss: 0.64962, F1: 0.64472
+Epoch 94 training: loss: 0.65130, F1: 0.64638
+Epoch 94 validation: loss: 0.64952, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 95 training: loss: 0.65119, F1: 0.64638
+Epoch 95 validation: loss: 0.64948, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 96 training: loss: 0.65088, F1: 0.64638
+Epoch 96 validation: loss: 0.64965, F1: 0.64472
+Epoch 97 training: loss: 0.65134, F1: 0.64638
+Epoch 97 validation: loss: 0.64993, F1: 0.64472
+Epoch 98 training: loss: 0.65107, F1: 0.64638
+Epoch 98 validation: loss: 0.65012, F1: 0.64472
+Epoch 99 training: loss: 0.65121, F1: 0.64638
+Epoch 99 validation: loss: 0.64954, F1: 0.64472
+Epoch 100 training: loss: 0.65128, F1: 0.64638
+Epoch 100 validation: loss: 0.65075, F1: 0.64472
+
+Training finished.
+Best validation loss: 0.64948
+Best validation F1:   0.64472
