@@ -1,7 +1,7 @@
 # %%
-import gurobipy as gp
+import gurobipy as gp # type: ignore
 import numpy as np
-import pandas as pd
+import pandas as pd # type: ignore
 import argparse
 import pickle
 import os

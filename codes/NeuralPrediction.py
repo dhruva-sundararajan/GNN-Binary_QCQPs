@@ -1,17 +1,17 @@
 # %%
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from torch.utils.data import DataLoader
-import torch_geometric
-import dhg
+import torch # type: ignore
+import torch.nn as nn # type: ignore
+import torch.nn.functional as F # type: ignore
+from torch.utils.data import DataLoader # type: ignore
+import torch_geometric # type: ignore
+import dhg # type: ignore
 import pickle
 import argparse
 import numpy as np
-from tqdm import tqdm
+from tqdm import tqdm # type: ignore
 import pprint
 import os
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score # type: ignore
 
 # global variables
 _root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +42,24 @@ def loss_fn(output, y_matrix):
         bce = criterion(output, target)
         loss += weight * bce
     return loss
+
+def f1_fn(output, y_matrix, threshold):
+    obj_vals = y_matrix[:, 0]
+    solutions = y_matrix[:, 1:]
+    weights = torch.softmax(-obj_vals, dim=0)
+    probs = torch.sigmoid(output).detach().cpu().numpy()
+    binary_preds = (probs >= threshold).astype(int)
+    total_f1 = 0.0
+    n_solns = solutions.shape[0]
+
+    for i in range(n_solns):
+        target = solutions[i].detach().cpu().numpy().astype(int)
+        weight = weights[i].item()
+
+        f1 = f1_score(target, binary_preds, zero_division=0)
+        total_f1 += weight * f1
+
+    return total_f1
 
 
 class UniEGNNConv(nn.Module):
@@ -275,25 +293,29 @@ def train(args):
 
     print(f"Start training {model_name} on {difficulty} problems with {nlayer} layers.")
 
-    losses = []
+    best_val_loss = float("inf")
     early_stop_count = 0
-    best_val_loss = float('inf')
+    losses = []
+    f1_scores = []
 
     for epoch in range(nepoch):
-
         model.train()
         train_losses = []
+        train_f1s = []
         accumulated_loss = torch.tensor(0.0, device=device)
+        accumulated_f1 = 0.0
         count = 0
 
         for name, G in tqdm(train_loader, desc=f"Epoch {epoch+1} Training"):
-
             G = G.to(device)
             output = model(G)
             output = output[:(G.opt_sol.size()[1] - 1)]
-            binary_output = (output > 0).long()
+
             loss = loss_fn(output, G.opt_sol)
+            f1 = f1_fn(output, G.opt_sol, args.threshold)
+
             accumulated_loss += loss
+            accumulated_f1 += f1
             count += 1
 
             if count % batch_size == 0:
@@ -301,33 +323,45 @@ def train(args):
                 (accumulated_loss / batch_size).backward()
                 optimizer.step()
                 train_losses.append(accumulated_loss.item() / batch_size)
+                train_f1s.append(accumulated_f1 / batch_size)
                 accumulated_loss = torch.tensor(0.0, device=device)
+                accumulated_f1 = 0.0
 
         if count % batch_size != 0:
+            final_batch_size = count % batch_size
             optimizer.zero_grad()
-            (accumulated_loss / (count % batch_size)).backward()
+            (accumulated_loss / final_batch_size).backward()
             optimizer.step()
-            train_losses.append(accumulated_loss.item() / (count % batch_size))
+            train_losses.append(accumulated_loss.item() / final_batch_size)
+            train_f1s.append(accumulated_f1 / final_batch_size)
 
-        mean_train_loss = np.mean(train_losses, axis=0)
-        print(f"Epoch {epoch+1} training: loss: {mean_train_loss:.5f}")
+        mean_train_loss = np.mean(train_losses)
+        mean_train_f1 = np.mean(train_f1s)
+        print(f"Epoch {epoch+1} training: loss: {mean_train_loss:.5f}, F1: {mean_train_f1:.5f}")
 
         model.eval()
         val_losses = []
-        
+        val_f1s = []
+
         with torch.no_grad():
             for _, G in tqdm(val_loader, desc=f"Epoch {epoch+1} Validation"):
                 G = G.to(device)
                 output = model(G)
                 output = output[:(G.opt_sol.size()[1] - 1)]
-                loss = loss_fn(output, G.opt_sol)
-                val_losses.append(loss.item())
 
-            mean_val_loss = np.mean(val_losses, axis=0)
-            print(f"Epoch {epoch+1} validation: loss: {mean_val_loss:.5f}")
+                loss = loss_fn(output, G.opt_sol)
+                f1 = f1_fn(output, G.opt_sol, args.threshold)
+
+                val_losses.append(loss.item())
+                val_f1s.append(f1)
+
+            mean_val_loss = np.mean(val_losses)
+            mean_val_f1 = np.mean(val_f1s)
+            print(f"Epoch {epoch+1} validation: loss: {mean_val_loss:.5f}, F1: {mean_val_f1:.5f}")
 
             if mean_val_loss < best_val_loss:
                 best_val_loss = mean_val_loss
+                best_val_f1 = mean_val_f1
                 early_stop_count = 0
                 torch.save(model.state_dict(), model_save_path)
                 print(f"Model {model_name} saved to {model_save_path}.")
@@ -336,33 +370,38 @@ def train(args):
                 if early_stop_count >= args.early_stop:
                     print(f"Early stop at epoch {epoch+1}.")
                     break
+
         losses.append(mean_val_loss)
-            
+        f1_scores.append(mean_val_f1)
+
         if epoch+1 in _epoch_list and args.output:
             with torch.no_grad():
                 outputs = []
                 for name, G in tqdm(data_loader, desc=f"Epoch {epoch+1} Output"):
-
                     G = G.to(device)
-
                     output = model(G)
                     output = output[:len(G.opt_sol)]
-
                     outputs.append((name, output.cpu().numpy()))
 
-                pickle.dump(outputs, open(
-                    f"{out_dir}/epoch_{epoch+1}_outputs.pkl", 'wb'))
+                pickle.dump(outputs, open(f"{out_dir}/epoch_{epoch+1}_outputs.pkl", 'wb'))
                 print(f"Epoch {epoch+1} outputs saved.")
+
     losses = np.array(losses)
-    pickle.dump([losses], open(
-        os.path.join(out_dir, "training_data.pkl"), "wb"))
-    print(f"Training finished.\nBest validation loss: {min(losses):.5f}")
+    f1_scores = np.array(f1_scores)
+
+    pickle.dump([losses], open(os.path.join(out_dir, "training_data.pkl"), "wb"))
+    pickle.dump([f1_scores], open(os.path.join(out_dir, "f1_scores.pkl"), "wb"))
+
+    print(f"\nTraining finished.")
+    print(f"Best validation loss: {min(losses):.5f}")
+    print(f"Best validation F1:   {max(f1_scores):.5f}")
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--difficulty', '-d', type=str, required=True)
     parser.add_argument('--model', '-m', type=str, default='UniEGNN',
                         choices=['UniEGNN'])
+    parser.add_argument('--threshold', type=float, default=0.5)
     parser.add_argument('--encoding', '-e', type=str, default='HG',
                         choices=['HG'])
     parser.add_argument('--nlayer', type=int, default=6)
