@@ -304,3 +304,85 @@ Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/med
 Epoch 39 training: loss: 0.69371, F1: 0.64638
 Epoch 39 validation: loss: 0.69352, F1: 0.64472
 Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 40 training: loss: 0.69368, F1: 0.64638
+Epoch 40 validation: loss: 0.69350, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 41 training: loss: 0.69366, F1: 0.64638
+Epoch 41 validation: loss: 0.69348, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 42 training: loss: 0.69365, F1: 0.64638
+Epoch 42 validation: loss: 0.69347, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 43 training: loss: 0.69361, F1: 0.64638
+Epoch 43 validation: loss: 0.69345, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 44 training: loss: 0.69360, F1: 0.64638
+Epoch 44 validation: loss: 0.69344, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 45 training: loss: 0.69359, F1: 0.64638
+Epoch 45 validation: loss: 0.69343, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 46 training: loss: 0.69357, F1: 0.64638
+Epoch 46 validation: loss: 0.69341, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 47 training: loss: 0.69354, F1: 0.64638
+Epoch 47 validation: loss: 0.69340, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 48 training: loss: 0.69351, F1: 0.64638
+Epoch 48 validation: loss: 0.69337, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 49 training: loss: 0.69347, F1: 0.64638
+Epoch 49 validation: loss: 0.69328, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 50 training: loss: 0.69139, F1: 0.64638
+Epoch 50 validation: loss: 0.68065, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 51 training: loss: 0.67572, F1: 0.64638
+Epoch 51 validation: loss: 0.65825, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 52 training: loss: 0.66706, F1: 0.64638
+Epoch 52 validation: loss: 0.65588, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 53 training: loss: 0.66141, F1: 0.64638
+Epoch 53 validation: loss: 0.65681, F1: 0.64472
+Epoch 54 training: loss: 0.65851, F1: 0.64638
+Epoch 54 validation: loss: 0.65468, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 55 training: loss: 0.65709, F1: 0.64638
+Epoch 55 validation: loss: 0.65425, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 56 training: loss: 0.65659, F1: 0.64638
+Epoch 56 validation: loss: 0.65377, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 57 training: loss: 0.65555, F1: 0.64638
+Epoch 57 validation: loss: 0.65494, F1: 0.64472
+Epoch 58 training: loss: 0.65548, F1: 0.64638
+Epoch 58 validation: loss: 0.65340, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 59 training: loss: 0.65483, F1: 0.64638
+Epoch 59 validation: loss: 0.65305, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 60 training: loss: 0.65510, F1: 0.64638
+Epoch 60 validation: loss: 0.65324, F1: 0.64472
+Epoch 61 training: loss: 0.65485, F1: 0.64638
+Epoch 61 validation: loss: 0.65297, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 62 training: loss: 0.65489, F1: 0.64638
+Epoch 62 validation: loss: 0.65322, F1: 0.64472
+Epoch 63 training: loss: 0.65454, F1: 0.64638
+Epoch 63 validation: loss: 0.65234, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 64 training: loss: 0.65418, F1: 0.64638
+Epoch 64 validation: loss: 0.65314, F1: 0.64472
+Epoch 65 training: loss: 0.65426, F1: 0.64638
+Epoch 65 validation: loss: 0.65304, F1: 0.64472
+Epoch 66 training: loss: 0.65404, F1: 0.64638
+Epoch 66 validation: loss: 0.65398, F1: 0.64472
+Epoch 67 training: loss: 0.65380, F1: 0.64638
+Epoch 67 validation: loss: 0.65254, F1: 0.64472
+Epoch 68 training: loss: 0.65341, F1: 0.64638
+Epoch 68 validation: loss: 0.65177, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 69 training: loss: 0.65320, F1: 0.64638
+Epoch 69 validation: loss: 0.65164, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
