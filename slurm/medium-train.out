@@ -386,3 +386,13 @@ Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/med
 Epoch 69 training: loss: 0.65320, F1: 0.64638
 Epoch 69 validation: loss: 0.65164, F1: 0.64472
 Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 70 training: loss: 0.65309, F1: 0.64638
+Epoch 70 validation: loss: 0.65224, F1: 0.64472
+Epoch 71 training: loss: 0.65320, F1: 0.64638
+Epoch 71 validation: loss: 0.65133, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
+Epoch 72 training: loss: 0.65282, F1: 0.64638
+Epoch 72 validation: loss: 0.65196, F1: 0.64472
+Epoch 73 training: loss: 0.65256, F1: 0.64638
+Epoch 73 validation: loss: 0.65122, F1: 0.64472
+Model UniEGNN saved to /home/dhruvasundar/all_feasible/runs/train/HG/UniEGNN/medium_layer6_nepoch100_lr0.0001_wd0.0001/trained_model.pkl.
